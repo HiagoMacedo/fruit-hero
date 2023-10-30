@@ -16,10 +16,6 @@ const int PEAR_LANE = 1;
 const int GRAPE_LANE = 2;
 const int APPLE_LANE = 3;
 
-/*
-Rect orange = (10,150,orange.cols,orange.rows);
-if (r && orange.area() > 50) // detecta
-*/
 
 Draw::Draw(std::string sequenceFile) 
 {
@@ -27,10 +23,10 @@ Draw::Draw(std::string sequenceFile)
     Gerenciador ge(sequencePath.string());
     sequence = ge.read();
     sequenceHead = 0;
-    // randomNumGen.set(MIN_LANE, MAX_LANE);
-    // currentLane = randomNumGen.get();
     currentLane = getNextSequence();
     points = 0;
+    // randomNumGen.set(MIN_LANE, MAX_LANE);
+    // currentLane = randomNumGen.get();
     
     orange = Fruit( imread("img/orange.png", IMREAD_UNCHANGED) );
     pear = Fruit( imread("img/pears_resized.png", IMREAD_UNCHANGED) );
@@ -103,19 +99,15 @@ void Draw::detectAndDraw( Mat& img, CascadeClassifier& cascade, double scale, bo
 
     // Desenha uma imagem
     if (currentLane == ORANGE_LANE) {
-        // std::cout << "Fruit: Orange\n";
         drawFruit(smallImg, orange, audio);
     }
     if (currentLane == PEAR_LANE) {
-        // std::cout << "Fruit: Pear\n";
         drawFruit(smallImg, pear, audio);
     }
     if(currentLane == GRAPE_LANE) {
-        // std::cout << "Fruit: Grape\n";
         drawFruit(smallImg, grape, audio);
     }
     if (currentLane == APPLE_LANE) {
-        // std::cout << "Fruit: Apple\n";
         drawFruit(smallImg, apple, audio);
     }
 
@@ -154,7 +146,6 @@ void Draw::detectAndDraw( Mat& img, CascadeClassifier& cascade, double scale, bo
     // Desenha o frame na tela
     imshow("Fruit Hero", smallImg );
     // printf("image::width: %d, height=%d\n", smallImg.cols, smallImg.rows );
-
 }
 
 void Draw::drawLanes(Mat& smallImg) {
@@ -167,7 +158,6 @@ void Draw::drawLanes(Mat& smallImg) {
 }
 
 bool Draw::containsFruit(Rect& r, Fruit& f, Audio& audio) {
-    // if(r && f.getRectangle().area() > 60) {
     if( r.contains( cv::Point(f.getX(), f.getY()) ) ) {
         audio.playCorrect();
         updatePoints(f);

@@ -19,10 +19,6 @@ public:
 
     void setImage(cv::Mat img);
 
-    cv::Rect getRectangle();
-
-    void setRectangle(cv::Rect rec);
-
     void setX(int xPos);
     
     int getX();
@@ -31,10 +27,8 @@ public:
     
     int getY();
 
-
 private:
     cv::Mat image;
-    cv::Rect rectangle;
     int x;
     int y;
 };
