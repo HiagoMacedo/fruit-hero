@@ -37,9 +37,9 @@ Draw::Draw(std::string sequenceFile)
     apple = Fruit( imread("img/apple_resized.png", IMREAD_UNCHANGED) );
     grape = Fruit(imread("img/grape_resized.png", IMREAD_UNCHANGED) );
     
-    orange.setX(80);
+    orange.setX(100);
     pear.setX(250);
-    grape.setX(400);
+    grape.setX(390);
     apple.setX(530);
     
 }
@@ -160,10 +160,10 @@ void Draw::detectAndDraw( Mat& img, CascadeClassifier& cascade, double scale, bo
 void Draw::drawLanes(Mat& smallImg) {
     double alpha = 0.3; 
 
-    drawTransRect(smallImg, Scalar(0,255,255), alpha, Rect(100, 0, 80, smallImg.rows));
-    drawTransRect(smallImg, Scalar(0,255,0), alpha, Rect(260, 0, 80, smallImg.rows));
-    drawTransRect(smallImg, Scalar(255,0,0), alpha, Rect(400, 0, 80, smallImg.rows));
-    drawTransRect(smallImg, Scalar(0,0,255), alpha, Rect(540, 0, 80, smallImg.rows));
+    drawTransRect(smallImg, Scalar(0,255,255), alpha, Rect(100, 0, 120, smallImg.rows));
+    drawTransRect(smallImg, Scalar(0,255,0), alpha, Rect(240, 0, 120, smallImg.rows));
+    drawTransRect(smallImg, Scalar(255,0,0), alpha, Rect(380, 0, 120, smallImg.rows));
+    drawTransRect(smallImg, Scalar(0,0,255), alpha, Rect(520, 0, 120, smallImg.rows));
 }
 
 bool Draw::containsFruit(Rect& r, Fruit& f, Audio& audio) {
