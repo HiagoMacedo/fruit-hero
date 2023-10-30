@@ -16,8 +16,6 @@ public:
     void deletar();
     void close();
 private:
-    std::ofstream outputStream;
-    std::ifstream inputStream;
     std::fstream fileStream;
     std::string path;
 };

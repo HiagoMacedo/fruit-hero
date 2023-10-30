@@ -37,8 +37,6 @@ public:
 
     int getNextSequence();
 
-    void setCurrentLane(int cl);
-
 private:
     int currentLane;
     int points;
@@ -48,6 +46,6 @@ private:
     Fruit grape;
     std::vector<std::string> sequence;
     int sequenceHead;
-    std::filesystem::path sequencePath;
-    UniformRandomInt randomNumGen;
+    // std::filesystem::path sequencePath;
+    // UniformRandomInt randomNumGen;
 };

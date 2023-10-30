@@ -3,8 +3,9 @@
 #include <string>
 #include "Draw.h"
 #include "Fruit.h"
-#include "UniformRandomInt.h"
+#include "Gerenciador.h"
 #include "Audio.h"
+// #include "UniformRandomInt.h"
 
 using namespace std;
 
@@ -29,8 +30,9 @@ public:
 
 private:
     vector<string> highScore;
-    Draw *draw;
+    Draw* draw;
     Audio audio;
+    Gerenciador* gerenciador;
     string chosenMusic;
     string sequenceFile;
 };

@@ -19,7 +19,7 @@ const int APPLE_LANE = 3;
 
 Draw::Draw(std::string sequenceFile) 
 {
-    sequencePath = std::filesystem::current_path() / "sequences" / sequenceFile;
+    std::filesystem::path sequencePath = std::filesystem::current_path() / "sequences" / sequenceFile;
     Gerenciador ge(sequencePath.string());
     sequence = ge.read();
     sequenceHead = 0;
@@ -181,8 +181,4 @@ int Draw::getNextSequence() {
     int next = stoi(sequence[sequenceHead]);
     sequenceHead++;
     return next;
-}
-
-void Draw::setCurrentLane(int cl) {
-    currentLane = cl;
 }

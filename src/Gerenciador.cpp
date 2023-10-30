@@ -60,7 +60,7 @@ void Gerenciador::update(std::vector<std::string> vec) {
         throw FileNotOpenedException("Arquivo não abriu!");
     }
     for (auto linha : vec) {
-        outputStream << linha << std::endl;
+        fileStream << linha << std::endl;
     }
     fileStream.close();
 }

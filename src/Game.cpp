@@ -17,7 +17,9 @@ const int VOLUME = 80;
 using namespace cv;
 using namespace std;
 
-Game::Game() {    
+Game::Game() {
+    filesystem::path path = filesystem::current_path() / "high_score.txt";;  
+    gerenciador = new Gerenciador(path.string());
 }
 
 int Game::start() {
@@ -131,11 +133,11 @@ char Game::chooseMusic() {
 }
 
 vector<string> Game::getHighScore() {
-    filesystem::path cwd = filesystem::current_path() / "high_score.txt";
-    Gerenciador gerenciador(cwd.string());
+    // filesystem::path cwd = filesystem::current_path() / "high_score.txt";
+    // Gerenciador gerenciador(cwd.string());
     
     try {
-        highScore = gerenciador.read();
+        highScore = gerenciador->read();
     }
     catch (FileNotOpenedException e) {
         cout << e.what() << endl;
@@ -145,13 +147,13 @@ vector<string> Game::getHighScore() {
 }
 
 void Game::updateHighScore(Draw *draw) {
-    filesystem::path cwd = filesystem::current_path() / "high_score.txt";
-    Gerenciador gerenciador(cwd.string());
+    // filesystem::path cwd = filesystem::current_path() / "high_score.txt";
+    // Gerenciador gerenciador(cwd.string());
     vector<string> newScore;
     string name;
 
     try {
-        highScore = gerenciador.read();
+        highScore = gerenciador->read();
         if (draw->getPoints() > stoi(highScore[1])) {
             cout << "Congratulations you have the new high score!" << endl;
             cout << "Type your nome:" << endl;
@@ -159,7 +161,7 @@ void Game::updateHighScore(Draw *draw) {
             getline(cin, name);
             newScore.push_back(name);
             newScore.push_back(to_string(draw->getPoints()));
-            gerenciador.create(newScore);
+            gerenciador->create(newScore);
         }
     }
     catch (FileNotOpenedException e) {
