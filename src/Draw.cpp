@@ -23,13 +23,13 @@ if (r && orange.area() > 50) // detecta
 
 Draw::Draw(std::string sequenceFile) 
 {
-    // std::filesystem::path sequence;
     sequencePath = std::filesystem::current_path() / "sequences" / sequenceFile;
     Gerenciador ge(sequencePath.string());
     sequence = ge.read();
     sequenceHead = 0;
-    randomNumGen.set(MIN_LANE, MAX_LANE);
-    currentLane = randomNumGen.get();
+    // randomNumGen.set(MIN_LANE, MAX_LANE);
+    // currentLane = randomNumGen.get();
+    currentLane = getNextSequence();
     points = 0;
     
     orange = Fruit( imread("img/orange.png", IMREAD_UNCHANGED) );
