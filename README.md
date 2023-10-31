@@ -8,4 +8,4 @@ Projeto feito para disciplina *Programação Orientada a Objetos* da UFPB do cur
 To compile in Linux:</br> `` g++ main.cpp error/*.cpp src/*.cpp -I include/ -lSDL2_mixer `pkg-config --cflags opencv4` `pkg-config --libs --static opencv4` ``
 
 ## Class Diagram
-![](img/Class_Diagram.png)
+![](class_diagram/Class_diagram.png)
