@@ -81,7 +81,8 @@ int Game::start() {
         cout << "Press enter to continue\n" ;
         getchar();
         getchar();
-        updateHighScore(draw);
+        // updateHighScore(draw);
+        updateHighScore();
     }
     delete(draw);
     system(CLEAR_TERMINAL);
@@ -118,11 +119,12 @@ char Game::chooseMusic() {
     cout << "----------------------------------------\n";
     cin >> option;
     if (option == '1') {
-        chosenMusic = "titanium.mp3";
+        // chosenMusic = "titanium.mp3";
+        chosenMusic = "Titanium";
         sequenceFile = "titanium_sequence.txt";
     }
     else if (option == '2') {
-        chosenMusic = "drive_breakbeat.mp3"; 
+        chosenMusic = "Drive Breakbeat"; 
         sequenceFile = "drive_breakbeat_sequence.txt";
     }
     else {
@@ -133,12 +135,9 @@ char Game::chooseMusic() {
 }
 
 vector<string> Game::getHighScore() {
-    // filesystem::path cwd = filesystem::current_path() / "high_score.txt";
-    // Gerenciador gerenciador(cwd.string());
-    
     try {
         highScore = gerenciador->read();
-    }
+    } 
     catch (FileNotOpenedException e) {
         cout << e.what() << endl;
     }
@@ -146,23 +145,24 @@ vector<string> Game::getHighScore() {
     return highScore;
 }
 
-void Game::updateHighScore(Draw *draw) {
-    // filesystem::path cwd = filesystem::current_path() / "high_score.txt";
-    // Gerenciador gerenciador(cwd.string());
+void Game::updateHighScore() {
     vector<string> newScore;
     string name;
+    string music;
 
     try {
-        highScore = gerenciador->read();
-        if (draw->getPoints() > stoi(highScore[1])) {
-            cout << "Congratulations you have the new high score!" << endl;
-            cout << "Type your nome:" << endl;
-            // cin.ignore();
-            getline(cin, name);
-            newScore.push_back(name);
-            newScore.push_back(to_string(draw->getPoints()));
-            gerenciador->create(newScore);
+        newScore = getHighScore();
+        for (int i = 0; i < newScore.size(); i+=3) {
+            if (newScore[i] == chosenMusic && draw->getPoints() > stoi(newScore[i+2]) ) {
+                cout << "Congratulations you have the new high score!" << endl;
+                cout << "Type your name:" << endl;
+                getline(cin, name);
+                newScore[i+1] = name;
+                newScore[i+2] = to_string(draw->getPoints());
+                
+            }
         }
+        gerenciador->create(newScore);
     }
     catch (FileNotOpenedException e) {
         cout << e.what() << endl;
@@ -175,14 +175,56 @@ void Game::showHighScore() {
     cout << "________________________________________\n";
     cout << " High Score\n";
     cout << "________________________________________\n";
-    getHighScore();
-    cout << "1. " << highScore[0] << " - " << highScore[1] << endl;
+    highScore = getHighScore();
+    for (int i = 0; i < highScore.size(); i+=3) {
+        cout << "Music: " << highScore[i] << endl;
+        cout << highScore[i+1] << " - " << highScore[i+2] << endl;
+    }
     cout << "----------------------------------------\n";
     cout << "Press enter to continue";
     getchar();
     getchar();
     system(CLEAR_TERMINAL);
 }
+
+// void Game::updateHighScore(Draw *draw) {
+//     // filesystem::path cwd = filesystem::current_path() / "high_score.txt";
+//     // Gerenciador gerenciador(cwd.string());
+//     vector<string> newScore;
+//     string name;
+
+//     try {
+//         highScore = gerenciador->read();
+//         if (draw->getPoints() > stoi(highScore[1])) {
+//             cout << "Congratulations you have the new high score!" << endl;
+//             cout << "Type your nome:" << endl;
+//             // cin.ignore();
+//             getline(cin, name);
+//             newScore.push_back(name);
+//             newScore.push_back(to_string(draw->getPoints()));
+//             gerenciador->create(newScore);
+//         }
+//     }
+//     catch (FileNotOpenedException e) {
+//         cout << e.what() << endl;
+//     }
+// }
+
+// void Game::showHighScore() {
+//     cout << "----------------------------------------\n";
+//     cout << "\t\tFRUIT HERO\n";
+//     cout << "________________________________________\n";
+//     cout << " High Score\n";
+//     cout << "________________________________________\n";
+//     getHighScore();
+//     // cout << "Music: " << highScore[0] << endl;
+//     cout << "1. " << highScore[0] << " - " << highScore[1] << endl;
+//     cout << "----------------------------------------\n";
+//     cout << "Press enter to continue";
+//     getchar();
+//     getchar();
+//     system(CLEAR_TERMINAL);
+// }
 
 // void Game::incrementPoints(int val) {
 //     points += val;

@@ -14,9 +14,17 @@ Gerenciador::Gerenciador(std::string path) {
     this->path = path;
     bool exist = std::filesystem::exists(path);
     if (!exist) {
+        // fileStream.open(path, std::ios::out);
+        // fileStream << "" << std::endl;
+        // fileStream << 0 << std::endl;
+        // fileStream.close();
         fileStream.open(path, std::ios::out);
+        fileStream << "Titanium" << std::endl;
         fileStream << "" << std::endl;
         fileStream << 0 << std::endl;
+        fileStream << "Drive Breakbeat" << std::endl;
+        fileStream << "" << std::endl;
+        fileStream << 0;
         fileStream.close();
     }
     // fileStream.open(path, std::ios::app);
@@ -29,11 +37,15 @@ void Gerenciador::create(std::vector<std::string> vec) {
     if (!fileStream.is_open()) {
         throw FileNotOpenedException("Arquivo não abriu!");
     }
-
-    for (auto linha : vec) {
-        fileStream << linha << std::endl;
+    
+    for (int i = 0; i < vec.size(); i++) {
+        if (i == vec.size()-1) {
+            fileStream << vec[i];
+        }
+        else {
+            fileStream << vec[i] << std::endl;
+        }
     }
-
     fileStream.close();
 }
 

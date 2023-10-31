@@ -24,7 +24,9 @@ public:
 
     vector<string> getHighScore(); 
 
-    void updateHighScore(Draw *draw);
+    void updateHighScore();
+
+    // void updateHighScore(Draw *draw);
 
     void showHighScore();
 

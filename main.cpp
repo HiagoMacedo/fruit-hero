@@ -1,14 +1,23 @@
 #include <iostream>
 #include "include/Game.h"
 
-using namespace std;
+#ifdef WIN32
+#define TERMINAL_CLEAR "cls"
+#define TERMINAL_SLEEP "timeout 1"
+#else
+#define TERMINAL_CLEAR "clear"
+#define TERMINAL_SLEEP "sleep 1"
+#endif
 
+using namespace std;
 
 int main( int argc, const char** argv )
 {
     Game game;
     bool quit = false;
     char option;
+
+    system(TERMINAL_CLEAR);
     
     while(quit == false) {
         option = game.menu();
@@ -24,12 +33,14 @@ int main( int argc, const char** argv )
             case '3': /* exit */
                 quit = true;
                 cout << "Exiting game..." << endl;
+                system(TERMINAL_SLEEP);
                 break;
             default:
                 cout << "Invalid option!" << endl;
                 break;
         }
     }
-    cout << "Game was sucessfully exited" << endl;
+    // system(TERMINAL_SLEEP);
+    cout << "Game was sucessfully closed" << endl;
     return 0;
 }

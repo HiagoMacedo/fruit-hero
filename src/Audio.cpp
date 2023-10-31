@@ -22,7 +22,7 @@ bool Audio::init() {
 }
     
 bool Audio::loadFiles(std::string musicChosen) {
-    std::filesystem::path musicPath = std::filesystem::current_path() / "sound" / musicChosen;
+    std::filesystem::path musicPath = std::filesystem::current_path() / "sound" / (musicChosen + ".mp3");
     std::filesystem::path correctPath = std::filesystem::current_path() / "sound/correct.wav";
     std::filesystem::path missPath = std::filesystem::current_path() / "sound/whoosh.wav";
 
