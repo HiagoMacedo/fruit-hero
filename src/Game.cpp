@@ -20,6 +20,7 @@ using namespace std;
 Game::Game() {
     filesystem::path path = filesystem::current_path() / "high_score.txt";;  
     gerenciador = new Gerenciador(path.string());
+    draw = NULL;
 }
 
 int Game::start() {
