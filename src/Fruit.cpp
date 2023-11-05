@@ -3,17 +3,20 @@
 Fruit::Fruit() {
     x = 0;
     y = 0;
+    speed = 0;
 }
 
-Fruit::Fruit(cv::Mat img) {
+Fruit::Fruit(cv::Mat img) : Fruit() {
     image = img;
-    x = 0;
-    y = 0;
 }
 
 Fruit::Fruit(cv::Mat img, int xPos, int yPos) : Fruit(img) {
     x = xPos;
     y = yPos;
+}
+
+void Fruit::setSpeed(int s) {
+    speed = s;
 }
 
 cv::Mat Fruit::getImage() {
@@ -40,6 +43,6 @@ int Fruit::getY() {
     return y;
 }
 
-void Fruit::incrementY(int val) {
-    y += val;
+void Fruit::increaseY() {
+    y += speed;
 }

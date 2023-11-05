@@ -28,15 +28,15 @@ Draw::Draw(std::string sequenceFile)
     // randomNumGen.set(MIN_LANE, MAX_LANE);
     // currentLane = randomNumGen.get();
     
-    orange = Fruit( imread("img/orange.png", IMREAD_UNCHANGED) );
-    pear = Fruit( imread("img/pears_resized.png", IMREAD_UNCHANGED) );
-    apple = Fruit( imread("img/apple_resized.png", IMREAD_UNCHANGED) );
-    grape = Fruit(imread("img/grape_resized.png", IMREAD_UNCHANGED) );
+    orange = Fruit( imread("img/orange.png", IMREAD_UNCHANGED), 100, 0 );
+    pear = Fruit( imread("img/pears_resized.png", IMREAD_UNCHANGED), 250, 0 );
+    grape = Fruit(imread("img/grape_resized.png", IMREAD_UNCHANGED), 390, 0 );
+    apple = Fruit( imread("img/apple_resized.png", IMREAD_UNCHANGED), 530, 0 );
     
-    orange.setX(100);
-    pear.setX(250);
-    grape.setX(390);
-    apple.setX(530);
+    orange.setSpeed(FRUIT_SPEED);
+    pear.setSpeed(FRUIT_SPEED);
+    grape.setSpeed(FRUIT_SPEED);
+    apple.setSpeed(FRUIT_SPEED);
     
 }
 
@@ -63,7 +63,7 @@ void Draw::drawFruit(cv::Mat& smallImg, Fruit& f, Audio& audio) {
     drawTransparency(smallImg, f.getImage(), f.getX(), f.getY());
 
     if (f.getY() < (smallImg.rows - f.getImage().rows)-FRUIT_SPEED) {
-        f.incrementY(FRUIT_SPEED);
+        f.increaseY();
     } 
     else {
         audio.playMiss();

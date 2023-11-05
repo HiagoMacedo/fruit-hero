@@ -13,7 +13,9 @@ public:
     Fruit(cv::Mat img);
     Fruit(cv::Mat img, int xPos, int yPos);
 
-    void incrementY(int val);
+    void increaseY();
+
+    void setSpeed(int s);
 
     cv::Mat getImage();
 
@@ -31,4 +33,5 @@ private:
     cv::Mat image;
     int x;
     int y;
+    int speed;
 };
