@@ -9,15 +9,14 @@
 #include "../error/FileNotOpenedException.h"
 
 
+Gerenciador::Gerenciador() {
+
+}
 
 Gerenciador::Gerenciador(std::string path) {
     this->path = path;
     bool exist = std::filesystem::exists(path);
     if (!exist) {
-        // fileStream.open(path, std::ios::out);
-        // fileStream << "" << std::endl;
-        // fileStream << 0 << std::endl;
-        // fileStream.close();
         fileStream.open(path, std::ios::out);
         fileStream << "Titanium" << std::endl;
         fileStream << "" << std::endl;
@@ -27,8 +26,6 @@ Gerenciador::Gerenciador(std::string path) {
         fileStream << 0;
         fileStream.close();
     }
-    // fileStream.open(path, std::ios::app);
-    // fileStream.close();
 }
 
 void Gerenciador::create(std::vector<std::string> vec) {
@@ -81,4 +78,8 @@ void Gerenciador::close() {
     if (fileStream.is_open()) {
         fileStream.close();
     }
+}
+
+void Gerenciador::setPath(std::string p) {
+    path = p;
 }

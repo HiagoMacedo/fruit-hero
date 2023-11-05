@@ -73,7 +73,7 @@ void Draw::drawFruit(cv::Mat& smallImg, Fruit& f, Audio& audio) {
     }
 }
 
-void Draw::detectAndDraw( Mat& img, CascadeClassifier& cascade, double scale, bool tryflip, Audio& audio) {
+void Draw::detectAndDraw( Mat& img, CascadeClassifier& cascade, double scale, bool tryflip, Audio& audio, Points& points) {
     double t = 0;
     vector<Rect> faces;
     Mat gray, smallImg;
@@ -120,19 +120,19 @@ void Draw::detectAndDraw( Mat& img, CascadeClassifier& cascade, double scale, bo
                     color, 3);
 
         if (currentLane == ORANGE_LANE) {
-            containsFruit(faces[0], orange, audio);
+            containsFruit(faces[0], orange, audio, points);
             break;
         }
         if (currentLane == PEAR_LANE) {
-            containsFruit(faces[0], pear, audio);
+            containsFruit(faces[0], pear, audio, points);
             break;
         }
         if(currentLane == GRAPE_LANE) {
-            containsFruit(faces[0], grape, audio);
+            containsFruit(faces[0], grape, audio, points);
             break;
         }
         if(currentLane == APPLE_LANE) {
-            containsFruit(faces[0], apple, audio);
+            containsFruit(faces[0], apple, audio, points);
             break;
         }
     }
@@ -141,7 +141,9 @@ void Draw::detectAndDraw( Mat& img, CascadeClassifier& cascade, double scale, bo
 
     // Desenha um texto
     color = Scalar(0,0,255);
-    putText	(smallImg, "Points: " + to_string(points), Point(10, 30), FONT_HERSHEY_PLAIN, 2, color, 2); // fonte
+    // putText	(smallImg, "Points: " + to_string(points), Point(10, 30), FONT_HERSHEY_PLAIN, 2, color, 2); // fonte
+    putText	(smallImg, "Points: " + to_string(points.getPoints()), Point(10, 30), FONT_HERSHEY_PLAIN, 2, color, 2); // fonte
+
 
     // Desenha o frame na tela
     imshow("Fruit Hero", smallImg );
@@ -157,24 +159,20 @@ void Draw::drawLanes(Mat& smallImg) {
     drawTransRect(smallImg, Scalar(0,0,255), alpha, Rect(520, 0, 120, smallImg.rows));
 }
 
-bool Draw::containsFruit(Rect& r, Fruit& f, Audio& audio) {
+bool Draw::containsFruit(Rect& r, Fruit& f, Audio& audio, Points& p) {
     if( r.contains( cv::Point(f.getX(), f.getY()) ) ) {
         audio.playCorrect();
-        updatePoints(f);
+        updatePoints(f, p);
         return true;
     }
     return false;
 }
 
-void Draw::updatePoints(Fruit& f) {
-    points++;
+void Draw::updatePoints(Fruit& f, Points &p) {
+    p.incrementPoints();
     f.setY(0);
     // currentLane = randomNumGen.get();
     currentLane = getNextSequence();
-}
-
-int Draw::getPoints() {
-    return points;
 }
 
 int Draw::getNextSequence() {
