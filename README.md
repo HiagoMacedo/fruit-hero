@@ -8,7 +8,7 @@ This project was done for the class *'LABORATORIO DE LINGUAGEM DE PROGRAMAÇÃO 
 ## How to install SDL2_mixer
 ### Install SDL2_mixer
 #### On Ubuntu:
-On the command line first type: `` sudo apt-get install libsdl2-mixer-dev  `` </br>
+On the command line first type: `` sudo apt-get install libsdl2-mixer-dev `` </br>
 After that you can type: `` sudo apt-get install libsdl2-mixer-2.0-0 `` </br>
 If it fails to compile you can try to download the SDL2 library by using this command: `` sudo apt-get install libsdl2-dev ``
 

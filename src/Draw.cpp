@@ -24,7 +24,6 @@ Draw::Draw(std::string sequenceFile)
     sequence = ge.read();
     sequenceHead = 0;
     currentLane = getNextSequence();
-    points = 0;
     // randomNumGen.set(MIN_LANE, MAX_LANE);
     // currentLane = randomNumGen.get();
     
@@ -162,17 +161,12 @@ void Draw::drawLanes(Mat& smallImg) {
 bool Draw::containsFruit(Rect& r, Fruit& f, Audio& audio, Points& p) {
     if( r.contains( cv::Point(f.getX(), f.getY()) ) ) {
         audio.playCorrect();
-        updatePoints(f, p);
+        p.incrementPoints();
+        f.setY(0);
+        currentLane = getNextSequence();
         return true;
     }
     return false;
-}
-
-void Draw::updatePoints(Fruit& f, Points &p) {
-    p.incrementPoints();
-    f.setY(0);
-    // currentLane = randomNumGen.get();
-    currentLane = getNextSequence();
 }
 
 int Draw::getNextSequence() {
@@ -180,3 +174,10 @@ int Draw::getNextSequence() {
     sequenceHead++;
     return next;
 }
+
+// void Draw::updatePoints(Fruit& f, Points &p) {
+//     p.incrementPoints();
+//     f.setY(0);
+//     // currentLane = randomNumGen.get();
+//     currentLane = getNextSequence();
+// }

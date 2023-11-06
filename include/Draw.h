@@ -34,13 +34,10 @@ public:
 
     bool containsFruit(Rect& r, Fruit& f, Audio& audio, Points& p);
 
-    void updatePoints(Fruit& f, Points &p);
-
     int getNextSequence();
 
 private:
     int currentLane;
-    int points;
     Fruit pear;
     Fruit orange;
     Fruit apple;
