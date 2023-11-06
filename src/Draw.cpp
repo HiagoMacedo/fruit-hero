@@ -27,10 +27,10 @@ Draw::Draw(std::string sequenceFile)
     // randomNumGen.set(MIN_LANE, MAX_LANE);
     // currentLane = randomNumGen.get();
     
-    orange = Fruit( imread("img/orange.png", IMREAD_UNCHANGED), 100, 0 );
-    pear = Fruit( imread("img/pears_resized.png", IMREAD_UNCHANGED), 250, 0 );
-    grape = Fruit(imread("img/grape_resized.png", IMREAD_UNCHANGED), 390, 0 );
-    apple = Fruit( imread("img/apple_resized.png", IMREAD_UNCHANGED), 530, 0 );
+    orange = Fruit( imread("img/orange.png", IMREAD_UNCHANGED), 110, 0 );
+    pear = Fruit( imread("img/pears_resized.png", IMREAD_UNCHANGED), 260, 0 );
+    grape = Fruit(imread("img/grape_resized.png", IMREAD_UNCHANGED), 400, 0 );
+    apple = Fruit( imread("img/apple_resized.png", IMREAD_UNCHANGED), 540, 0 );
     
     orange.setSpeed(FRUIT_SPEED);
     pear.setSpeed(FRUIT_SPEED);
