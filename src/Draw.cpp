@@ -150,11 +150,11 @@ void Draw::detectAndDraw( Mat& img, CascadeClassifier& cascade, double scale, bo
 }
 
 void Draw::drawLanes(Mat& smallImg) {
-    double alpha = 0.3; 
+    double alpha = 0.4; 
 
-    drawTransRect(smallImg, Scalar(0,255,255), alpha, Rect(100, 0, 120, smallImg.rows));
-    drawTransRect(smallImg, Scalar(0,255,0), alpha, Rect(240, 0, 120, smallImg.rows));
-    drawTransRect(smallImg, Scalar(255,0,0), alpha, Rect(380, 0, 120, smallImg.rows));
+    drawTransRect(smallImg, Scalar(0,255,255), alpha, Rect(100, 0, 130, smallImg.rows));
+    drawTransRect(smallImg, Scalar(0,255,0), alpha, Rect(240, 0, 130, smallImg.rows));
+    drawTransRect(smallImg, Scalar(255,0,0), alpha, Rect(380, 0, 130, smallImg.rows));
     drawTransRect(smallImg, Scalar(0,0,255), alpha, Rect(520, 0, 120, smallImg.rows));
 }
 

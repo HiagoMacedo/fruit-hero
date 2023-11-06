@@ -159,6 +159,7 @@ void Game::showHighScore() {
     for (int i = 0; i < highScore.size(); i+=3) {
         cout << "Music: " << highScore[i] << endl;
         cout << highScore[i+1] << " - " << highScore[i+2] << endl;
+        cout << "\n";
     }
     cout << "----------------------------------------\n";
     cout << "Press enter to continue";
