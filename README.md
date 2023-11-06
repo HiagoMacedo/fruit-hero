@@ -5,7 +5,7 @@ Projeto feito para disciplina *Programação Orientada a Objetos* da UFPB do cur
 
 ## How to Compile
 **It needs at least C++17** </br></br>
-To compile in Linux:</br> `` g++ main.cpp error/*.cpp src/*.cpp -I include/ -lSDL2_mixer `pkg-config --cflags opencv4` `pkg-config --libs --static opencv4` ``
+To compile in Linux:</br> `` g++ main.cpp error/*.cpp src/*.cpp -I include/ -std=c++17 -lSDL2_mixer `pkg-config --cflags opencv4` `pkg-config --libs --static opencv4` ``
 
 ## Class Diagram
 ![](class_diagram/Class_diagram.png)
