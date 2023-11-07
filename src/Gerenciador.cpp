@@ -82,4 +82,15 @@ void Gerenciador::close() {
 
 void Gerenciador::setPath(std::string p) {
     path = p;
+    bool exist = std::filesystem::exists(path);
+    if (!exist) {
+        fileStream.open(path, std::ios::out);
+        fileStream << "Titanium" << std::endl;
+        fileStream << "" << std::endl;
+        fileStream << 0 << std::endl;
+        fileStream << "Drive Breakbeat" << std::endl;
+        fileStream << "" << std::endl;
+        fileStream << 0;
+        fileStream.close();
+    }
 }
