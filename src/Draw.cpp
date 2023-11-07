@@ -141,7 +141,7 @@ void Draw::detectAndDraw( Mat& img, CascadeClassifier& cascade, double scale, bo
     // Desenha um texto
     color = Scalar(0,0,255);
     // putText	(smallImg, "Points: " + to_string(points), Point(10, 30), FONT_HERSHEY_PLAIN, 2, color, 2); // fonte
-    putText	(smallImg, "Points: " + to_string(points.getPoints()), Point(10, 30), FONT_HERSHEY_PLAIN, 2, color, 2); // fonte
+    putText	(smallImg, to_string(points.getPoints()), Point(20, 30), FONT_HERSHEY_PLAIN, 2, color, 2); // fonte
 
 
     // Desenha o frame na tela
@@ -152,9 +152,10 @@ void Draw::detectAndDraw( Mat& img, CascadeClassifier& cascade, double scale, bo
 void Draw::drawLanes(Mat& smallImg) {
     double alpha = 0.4; 
 
-    drawTransRect(smallImg, Scalar(0,255,255), alpha, Rect(100, 0, 130, smallImg.rows));
-    drawTransRect(smallImg, Scalar(0,255,0), alpha, Rect(240, 0, 130, smallImg.rows));
-    drawTransRect(smallImg, Scalar(255,0,0), alpha, Rect(380, 0, 130, smallImg.rows));
+    drawTransRect(smallImg, Scalar(0,0,0), 1.0, Rect(0, 0, 100, smallImg.rows));
+    drawTransRect(smallImg, Scalar(0,255,255), alpha, Rect(100, 0, 140, smallImg.rows));
+    drawTransRect(smallImg, Scalar(0,255,0), alpha, Rect(240, 0, 140, smallImg.rows));
+    drawTransRect(smallImg, Scalar(255,0,0), alpha, Rect(380, 0, 140, smallImg.rows));
     drawTransRect(smallImg, Scalar(0,0,255), alpha, Rect(520, 0, 120, smallImg.rows));
 }
 
