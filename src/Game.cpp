@@ -12,7 +12,7 @@
 #define CLEAR_TERMINAL "clear"
 #endif
 
-const int VOLUME = 80;
+const int VOLUME = 100;
 
 using namespace cv;
 using namespace std;

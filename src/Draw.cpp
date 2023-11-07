@@ -30,7 +30,7 @@ Draw::Draw(std::string sequenceFile)
     orange = Fruit( imread("img/orange.png", IMREAD_UNCHANGED), 110, 0 );
     pear = Fruit( imread("img/pears_resized.png", IMREAD_UNCHANGED), 260, 0 );
     grape = Fruit(imread("img/grape_resized.png", IMREAD_UNCHANGED), 400, 0 );
-    apple = Fruit( imread("img/apple_resized.png", IMREAD_UNCHANGED), 540, 0 );
+    apple = Fruit( imread("img/apple_resized.png", IMREAD_UNCHANGED), 530, 0 );
     
     orange.setSpeed(FRUIT_SPEED);
     pear.setSpeed(FRUIT_SPEED);
